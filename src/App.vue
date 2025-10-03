@@ -20,7 +20,6 @@ body {
   background: #fafafa;
 }
 main {
-  min-height: 80vh;
-  padding: 2rem 0;
+  min-height: 75vh;
 }
 </style>

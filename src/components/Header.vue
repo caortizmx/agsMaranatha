@@ -158,6 +158,7 @@ watch(
   top: 0;
   transform: rotate(-45deg);
 }
+
 .nav-links {
   list-style: none;
   display: flex;
@@ -238,20 +239,32 @@ watch(
     align-items: flex-start;
     background: #ffffff;
     border-radius: 16px;
-    box-shadow: 0 20px 45px rgba(13, 71, 161, 0.15);
-    margin-top: 1rem;
-    padding: 1.25rem 1.5rem;
+    margin-top: 0;
+    padding: 0;
     position: relative;
     opacity: 0;
     pointer-events: none;
     transform: translateY(-10px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    max-height: 0;
+    overflow: hidden;
+    box-shadow: none;
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease,
+      max-height 0.3s ease,
+      padding 0.3s ease,
+      margin 0.3s ease,
+      box-shadow 0.3s ease;
   }
 
   .nav-links.open {
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0);
+    padding: 1.25rem 1.5rem;
+    margin-top: 1rem;
+    box-shadow: 0 20px 45px rgba(13, 71, 161, 0.15);
+    max-height: 600px;
   }
 
   .nav-link {
