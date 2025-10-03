@@ -2,7 +2,7 @@
   <section>
     <!-- Hero Image -->
     <div class="hero">
-      <img src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=1200&q=80" alt="Hero Escuela" />
+      <img :src="Hero" alt="Hero Escuela" />
       <div class="hero-text">
         <h1>Bienvenidos a la Escuela Primaria Ejemplo</h1>
         <p>
@@ -22,6 +22,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import Hero from '../assets/Hero1.png';
 
 const images = [
   "https://images.pexels.com/photos/256401/pexels-photo-256401.jpeg?auto=compress&w=600",
