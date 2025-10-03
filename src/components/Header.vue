@@ -76,17 +76,18 @@ watch(
   align-items: center;
   justify-content: space-between;
   max-width: 1200px;
-  padding: 1.25rem 1.5rem;
+  padding: 1.25rem clamp(1rem, 3vw, 1.5rem);
   margin: 0 auto;
-  gap: 2rem;
+  gap: clamp(1rem, 4vw, 2rem);
 }
 .brand {
   display: inline-flex;
   align-items: center;
+  max-width: min(260px, 55vw);
 }
 
 .brand img {
-  max-width: min(290px, 60vw);
+  width: 100%;
   height: auto;
 }
 
@@ -217,7 +218,7 @@ watch(
 
 @media (max-width: 1024px) {
   .nav {
-    padding: 1rem;
+    padding-inline: clamp(0.75rem, 4vw, 1.5rem);
   }
 
   .nav-links {
@@ -274,6 +275,22 @@ watch(
   .nav-link.active::after {
     left: 0;
     width: 80px;
+  }
+}
+
+@media (max-width: 600px) {
+  .brand {
+    max-width: min(220px, 60vw);
+  }
+
+  .nav {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .brand {
+    max-width: min(200px, 65vw);
   }
 }
 </style>

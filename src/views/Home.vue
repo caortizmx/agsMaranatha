@@ -52,11 +52,17 @@
 
     <section class="gallery-section" aria-label="Recorrido fotográfico">
       <div class="carousel">
-        <button class="carousel-control" type="button" @click="prevSlide" aria-label="Anterior">
+        <button
+          class="carousel-control"
+          type="button"
+          @click="prevSlide"
+          aria-label="Anterior"
+          :disabled="totalSlides === 1"
+        >
           <i class="fas fa-chevron-left" aria-hidden="true"></i>
         </button>
         <div class="carousel-window">
-          <div class="carousel-track">
+          <div class="carousel-track" :style="trackStyles">
             <figure
               v-for="image in visibleImages"
               :key="image.src"
@@ -66,7 +72,13 @@
             </figure>
           </div>
         </div>
-        <button class="carousel-control" type="button" @click="nextSlide" aria-label="Siguiente">
+        <button
+          class="carousel-control"
+          type="button"
+          @click="nextSlide"
+          aria-label="Siguiente"
+          :disabled="totalSlides === 1"
+        >
           <i class="fas fa-chevron-right" aria-hidden="true"></i>
         </button>
       </div>
@@ -146,7 +158,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted, onUnmounted, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 
 const levels = [
   {
@@ -312,8 +324,8 @@ const extendedTeam = [
 const completeTeam = computed(() => [...leadership, ...extendedTeam])
 
 const currentSlide = ref(0)
-const itemsPerSlide = 3
-const totalSlides = computed(() => Math.ceil(carouselImages.length / itemsPerSlide))
+const itemsPerSlide = ref(3)
+const totalSlides = computed(() => Math.ceil(carouselImages.length / itemsPerSlide.value))
 
 const goToSlide = (index) => {
   const clampedIndex = Math.min(Math.max(index, 0), totalSlides.value - 1)
@@ -329,9 +341,13 @@ const prevSlide = () => {
 }
 
 const visibleImages = computed(() => {
-  const start = currentSlide.value * itemsPerSlide
-  return carouselImages.slice(start, start + itemsPerSlide)
+  const start = currentSlide.value * itemsPerSlide.value
+  return carouselImages.slice(start, start + itemsPerSlide.value)
 })
+
+const trackStyles = computed(() => ({
+  gridTemplateColumns: `repeat(${itemsPerSlide.value}, minmax(0, 1fr))`,
+}))
 
 const showModal = ref(false)
 
@@ -351,11 +367,45 @@ const handleEsc = (event) => {
   }
 }
 
+const updateItemsPerSlide = () => {
+  if (typeof window === 'undefined') {
+    return
+  }
+
+  const width = window.innerWidth
+  let nextValue = 3
+
+  if (width < 520) {
+    nextValue = 1
+  } else if (width < 900) {
+    nextValue = 2
+  }
+
+  if (itemsPerSlide.value !== nextValue) {
+    itemsPerSlide.value = nextValue
+  }
+}
+
+watch(totalSlides, (newTotal) => {
+  if (newTotal <= 0) {
+    currentSlide.value = 0
+    return
+  }
+
+  const maxIndex = newTotal - 1
+  if (currentSlide.value > maxIndex) {
+    currentSlide.value = maxIndex
+  }
+})
+
 onMounted(() => {
+  updateItemsPerSlide()
+  window.addEventListener('resize', updateItemsPerSlide)
   window.addEventListener('keydown', handleEsc)
 })
 
 onUnmounted(() => {
+  window.removeEventListener('resize', updateItemsPerSlide)
   window.removeEventListener('keydown', handleEsc)
   document.body.style.overflow = ''
 })
@@ -398,7 +448,12 @@ onUnmounted(() => {
   text-align: center;
   color: #ffffff;
   max-width: 1200px;
-  padding: 1.5rem 2rem;
+  width: min(100%, 960px);
+  padding: clamp(1.5rem, 2vw + 1rem, 2.5rem) clamp(1.5rem, 4vw, 3rem);
+  background: linear-gradient(180deg, rgba(8, 22, 62, 0.85), rgba(8, 22, 62, 0.6));
+  border-radius: 2rem 2rem 0 0;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 18px 45px rgba(9, 18, 44, 0.3);
 }
 
 .hero-eyebrow {
@@ -443,7 +498,7 @@ onUnmounted(() => {
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   outline: none;
-  height: 200px;
+  min-height: 200px;
 }
 
 .level-card:focus-visible {
@@ -495,6 +550,39 @@ onUnmounted(() => {
 .card-face p {
   font-size: 0.95rem;
   line-height: 1.5;
+}
+
+@media (hover: none) {
+  .level-card {
+    padding: 2rem 1.25rem;
+    cursor: default;
+  }
+
+  .card-face {
+    gap: 0.85rem;
+  }
+
+  .card-face--front {
+    display: none;
+  }
+
+  .card-face--back {
+    position: relative;
+    inset: auto;
+    opacity: 1;
+    padding: 0;
+    background: transparent;
+  }
+
+  .card-face--back p {
+    font-size: 1rem;
+  }
+
+  .level-card:hover,
+  .level-card:focus-visible {
+    transform: none;
+    box-shadow: 0 12px 28px rgba(12, 31, 71, 0.18);
+  }
 }
 
 .offer-highlight {
@@ -590,6 +678,7 @@ onUnmounted(() => {
 
 .carousel-track {
   display: grid;
+  grid-auto-flow: column;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
   width: 100%;
@@ -622,9 +711,15 @@ onUnmounted(() => {
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.carousel-control:hover {
+.carousel-control:not(:disabled):hover {
   background: #14327a;
   transform: translateY(-2px);
+}
+
+.carousel-control:disabled {
+  opacity: 0.45;
+  cursor: default;
+  transform: none;
 }
 
 .carousel-dots {
@@ -836,9 +931,13 @@ onUnmounted(() => {
 }
 
 @media (max-width: 768px) {
+  .hero-section {
+    min-height: 440px;
+  }
+
   .hero-overlay {
-    top: 8%;
-    padding: 1.25rem 1.5rem;
+    width: min(100%, 620px);
+    padding: 1.75rem clamp(1.25rem, 4vw, 2rem);
   }
 
   .hero-subcopy {
@@ -864,11 +963,14 @@ onUnmounted(() => {
 
 @media (max-width: 600px) {
   .hero-section {
-    min-height: 520px;
+    min-height: 460px;
+    padding-bottom: 0;
   }
 
   .hero-overlay {
-    top: 6%;
+    width: min(100%, 420px);
+    padding: 1.75rem 1.25rem;
+    border-radius: 1.5rem 1.5rem 0 0;
   }
 
   .levels-grid {
@@ -887,10 +989,6 @@ onUnmounted(() => {
     width: 100%;
   }
 
-  .carousel-track {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .offer-pillars,
   .team-grid {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -903,11 +1001,9 @@ onUnmounted(() => {
   }
 
   .hero-overlay {
-    padding-inline: 1rem;
-  }
-
-  .carousel-track {
-    grid-template-columns: 1fr;
+    width: 100%;
+    border-radius: 1.5rem 1.5rem 0 0;
+    padding-inline: 1.25rem;
   }
 
   .pillar-icon {

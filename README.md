@@ -13,6 +13,8 @@ Nuevo dominio del colegio Maranatha Aguascalientes
    ```
 
 > [!NOTE]
+> The project targets the Vite 5 toolchain so it can run on the Node 18 runtime that powers the Codex environment. If you are
+> using a newer global Vite installation, rely on the local `npm` scripts to avoid version mismatches.
 > This repository includes an `.npmrc` file that enables `legacy-peer-deps`. The setting suppresses peer dependency resolution
 > conflicts between Vite 7 and `@vitejs/plugin-vue` so the install step can complete without manual flags.
 

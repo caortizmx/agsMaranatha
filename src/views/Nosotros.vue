@@ -60,10 +60,11 @@
   display: grid;
   gap: 2rem;
   align-items: center;
-  padding: 4rem clamp(1.5rem, 3vw, 4rem);
+  padding: clamp(3.5rem, 6vw, 4.75rem) clamp(1.5rem, 5vw, 4rem);
   background: linear-gradient(90deg, #1f2b6c 0%, #27368f 100%);
   color: #ffffff;
   overflow: hidden;
+  border-radius: 0 0 2.5rem 2.5rem;
 }
 
 .hero__text p {
@@ -77,9 +78,9 @@
 .hero__image {
   justify-self: center;
   max-width: 520px;
-  width: 100%;
-  margin: -100px auto 0 auto;
-
+  width: min(100%, 520px);
+  margin: clamp(-80px, -10vw, -40px) auto 0 auto;
+  padding: 0 clamp(1.5rem, 4vw, 3rem);
 }
 
 .hero__image img {
@@ -93,22 +94,22 @@
   overflow: hidden;
   max-width: 1200px;
   margin: 0 auto;
+  border-radius: 2rem;
 }
 
 .feature__content {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: stretch;
-  height: 500px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
 }
 
 .feature__text {
-  padding: 0 50px;
+  padding: clamp(2.5rem, 4vw, 3.5rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 1rem;
-  height: 500px;
 }
 
 .feature__text h2 {
@@ -122,23 +123,26 @@
   max-width: 48ch;
 }
 
+.feature__image {
+  position: relative;
+  min-height: 320px;
+}
+
 .feature__image img {
   width: 100%;
   height: 100%;
+  max-height: 520px;
   object-fit: cover;
-  height: 500px;
 }
 
 .feature--mission {
   background-color: #E6A726;
   color: #fff7ec;
-  height: 500px;
 }
 
 .feature--vision {
   background-color: #E6A726;
   color: #fff7ec;
-  height: 500px;
 }
 
 .feature--vision .feature__text h2 {
@@ -159,6 +163,11 @@
     margin: 0 auto;
   }
 
+  .hero__image {
+    margin: 2rem auto 0;
+    padding-inline: clamp(1.5rem, 6vw, 3rem);
+  }
+
   .feature__content {
     grid-template-columns: 1fr;
   }
@@ -166,10 +175,6 @@
   .feature--vision .feature__content {
     display: flex;
     flex-direction: column-reverse;
-  }
-
-  .feature__image {
-    max-height: 320px;
   }
 }
 
@@ -180,10 +185,20 @@
 
   .hero {
     padding: 3rem 1.5rem;
+    border-radius: 0 0 2rem 2rem;
+  }
+
+  .hero__image {
+    margin-top: 1.5rem;
+    padding-inline: 1.5rem;
   }
 
   .feature__text {
     padding: 2.5rem 1.5rem;
+  }
+
+  .feature__image {
+    min-height: 260px;
   }
 }
 </style>
