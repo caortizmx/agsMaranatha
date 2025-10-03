@@ -1,0 +1,19 @@
+# Node modules
+node_modules/
+
+# Vite build output
+dist/
+
+# Local env files
+.env.local
+.env.*
+!.env.example
+
+# IDE/editor folders
+.vscode/
+.idea/
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
