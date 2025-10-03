@@ -21,30 +21,30 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Set up Pages (recommended)
+      # Enable and configure Pages for this repo (this fixes your error)
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true   # <— important
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22.12'    # Vite requires >=20.19 or >=22.12
+          node-version: '22.12'   # Vite requires >=20.19 or >=22.12
           cache: 'npm'
 
-      # Resolve base path:
-      # If repo variable VITE_PUBLIC_BASE_PATH is set, use it (e.g. "/agsMaranatha/").
-      # Otherwise default to "/<repo-name>/" for project pages.
+      # Decide the Vite base path:
+      # - If repo var VITE_PUBLIC_BASE_PATH exists, use it (e.g., "/agsMaranatha/" or "/").
+      # - Else default to "/<repo-name>/" which works for project pages.
       - name: Resolve base path
         run: |
           DEFAULT_BASE="/${{ github.event.repository.name }}/"
-          # If the repo has a custom domain (CNAME), you likely want "/" instead.
-          # You can override via repository variable VITE_PUBLIC_BASE_PATH.
           if [ -n "${{ vars.VITE_PUBLIC_BASE_PATH }}" ]; then
-            echo "Using variable VITE_PUBLIC_BASE_PATH='${{ vars.VITE_PUBLIC_BASE_PATH }}'"
             echo "VITE_PUBLIC_BASE_PATH=${{ vars.VITE_PUBLIC_BASE_PATH }}" >> "$GITHUB_ENV"
+            echo "Using repository variable VITE_PUBLIC_BASE_PATH='${{ vars.VITE_PUBLIC_BASE_PATH }}'"
           else
-            echo "No VITE_PUBLIC_BASE_PATH var set; defaulting to ${DEFAULT_BASE}"
             echo "VITE_PUBLIC_BASE_PATH=${DEFAULT_BASE}" >> "$GITHUB_ENV"
+            echo "No repo var set; defaulting base to '${DEFAULT_BASE}'"
           fi
 
       - name: Install dependencies
