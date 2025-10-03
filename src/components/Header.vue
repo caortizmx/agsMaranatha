@@ -1,7 +1,11 @@
+<script setup>
+import LogoHeader from '../assets/LogoHeader.png'
+</script>
+
 <template>
   <header>
     <nav>
-      <img src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=120&q=80" alt="Logo" height="50" />
+      <img :src="LogoHeader" alt="Logo" height="55" />
       <ul>
         <li><router-link to="/">Home</router-link></li>
         <li><router-link to="/nosotros">Nosotros</router-link></li>
