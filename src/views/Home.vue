@@ -1058,6 +1058,7 @@ onUnmounted(() => {
 
   .levels-grid {
     padding-inline: clamp(1rem, 3vw, 2rem);
+    padding: 0;
   }
 
   .pillar {
@@ -1070,6 +1071,9 @@ onUnmounted(() => {
 
   .modal-panel {
     border-radius: 1.25rem;
+  }
+  .level-card {
+      min-height: 275px;
   }
 }
 
@@ -1087,6 +1091,7 @@ onUnmounted(() => {
 
   .levels-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 0;
   }
 
   .carousel {
@@ -1105,11 +1110,15 @@ onUnmounted(() => {
   .team-grid {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
+  .level-card {
+      min-height: 200px;
+  }
 }
 
 @media (max-width: 480px) {
   .levels-grid {
     grid-template-columns: 1fr;
+    padding: 0;
   }
 
   .hero-overlay {
@@ -1131,6 +1140,9 @@ onUnmounted(() => {
   .team-avatar {
     width: 120px;
     height: 120px;
+  }
+  .level-card {
+      min-height: 175px;
   }
 }
 </style>

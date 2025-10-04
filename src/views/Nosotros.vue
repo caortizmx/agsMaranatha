@@ -191,6 +191,7 @@
   .hero__image {
     margin-top: 1.5rem;
     padding-inline: 1.5rem;
+    padding: 0;
   }
 
   .feature__text {
