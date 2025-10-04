@@ -41,8 +41,22 @@
       </div>
       <div class="offer-pillars">
         <div v-for="pillar in pillars" :key="pillar.title" class="pillar">
-          <div class="pillar-icon">
-            <i :class="pillar.icon" aria-hidden="true"></i>
+          <div class="pillar-icon" aria-hidden="true">
+            <svg
+              class="pillar-icon__svg"
+              :viewBox="pillar.icon.viewBox"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              focusable="false"
+            >
+              <path
+                v-for="(path, index) in pillar.icon.paths"
+                :key="index"
+                :d="path.d"
+                :fill="path.fill ?? 'currentColor'"
+                :opacity="path.opacity"
+              />
+            </svg>
           </div>
           <h3>{{ pillar.title }}</h3>
           <p>{{ pillar.copy }}</p>
@@ -59,7 +73,20 @@
           aria-label="Anterior"
           :disabled="totalSlides === 1"
         >
-          <i class="fas fa-chevron-left" aria-hidden="true"></i>
+          <svg
+            class="carousel-icon"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M14.5 5.5 9 12l5.5 6.5" />
+          </svg>
         </button>
         <div class="carousel-window">
           <div class="carousel-track" :style="trackStyles">
@@ -79,7 +106,20 @@
           aria-label="Siguiente"
           :disabled="totalSlides === 1"
         >
-          <i class="fas fa-chevron-right" aria-hidden="true"></i>
+          <svg
+            class="carousel-icon"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="m9.5 5.5 5.5 6.5-5.5 6.5" />
+          </svg>
         </button>
       </div>
       <div class="carousel-dots" role="tablist" aria-label="Seleccionar grupo de imágenes">
@@ -130,7 +170,20 @@
           <header class="modal-header">
             <h3 id="team-modal-title">Equipo docente completo</h3>
             <button type="button" class="modal-close" @click="closeModal" aria-label="Cerrar">
-              <i class="fas fa-times" aria-hidden="true"></i>
+              <svg
+                class="modal-close__icon"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M6 6l12 12M18 6 6 18" />
+              </svg>
             </button>
           </header>
           <div class="modal-content">
@@ -187,17 +240,41 @@ const pillars = [
   {
     title: 'Inspiramos creatividad',
     copy: 'Integramos arte, música y experiencias vivenciales para despertar la imaginación en cada aula.',
-    icon: 'fas fa-lightbulb'
+    icon: {
+      viewBox: '0 0 24 24',
+      paths: [
+        {
+          d: 'M12 2a7 7 0 0 0-4.3 12.6c.5.4.8 1 .8 1.6V17a2 2 0 0 0 2 2v1a1 1 0 0 0 2 0v-1a2 2 0 0 0 2-2v-.8c0-.6.3-1.2.8-1.6A7 7 0 0 0 12 2Zm1 14h-2v-2h2v2Z',
+        },
+        {
+          d: 'M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z',
+        },
+      ],
+    }
   },
   {
     title: 'Excelencia académica',
     copy: 'Programas actualizados y docentes certificados garantizan un aprendizaje significativo.',
-    icon: 'fas fa-graduation-cap'
+    icon: {
+      viewBox: '0 0 24 24',
+      paths: [
+        { d: 'M12 3 2 8l10 5 10-5-10-5Z' },
+        { d: 'M5 10.5v3.2c0 2 3.3 3.8 7 3.8s7-1.8 7-3.8v-3.2l-7 3.5-7-3.5Z' },
+        { d: 'M19 11v5.8a1.2 1.2 0 0 0 2.4 0V9.8L19 11Z' },
+      ],
+    }
   },
   {
     title: 'Cuidado integral',
     copy: 'Acompañamos el bienestar físico, emocional y espiritual de nuestra comunidad educativa.',
-    icon: 'fas fa-hands-holding-heart'
+    icon: {
+      viewBox: '0 0 24 24',
+      paths: [
+        { d: 'M12 6.5c-1.3-1.6-3.7-1.7-5.1-.2a3.6 3.6 0 0 0 0 4.9l5.1 5.3 5.1-5.3a3.6 3.6 0 0 0 0-4.9c-1.4-1.5-3.8-1.4-5.1.2Z' },
+        { d: 'M4.2 13.7c-.7.4-1.2 1.1-1.2 1.9v2.6c0 1.4.9 2.7 2.3 3.2l4.4 1.6c1.1.4 2.3-.4 2.3-1.6v-3.1a2.5 2.5 0 0 0-1.4-2.2l-3-1.5a2.6 2.6 0 0 0-2.4.1Z' },
+        { d: 'M19.8 13.7a2.6 2.6 0 0 0-2.4-.1l-3 1.5a2.5 2.5 0 0 0-1.4 2.2v3.1c0 1.2 1.2 2 2.3 1.6l4.4-1.6c1.4-.5 2.3-1.8 2.3-3.2v-2.6c0-.8-.5-1.5-1.2-1.9Z' },
+      ],
+    }
   }
 ]
 
@@ -639,7 +716,11 @@ onUnmounted(() => {
   display: grid;
   place-items: center;
   color: #ffffff;
-  font-size: 2rem;
+}
+
+.pillar-icon__svg {
+  width: 42px;
+  height: 42px;
 }
 
 .pillar h3 {
@@ -709,6 +790,11 @@ onUnmounted(() => {
   place-items: center;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.carousel-icon {
+  width: 20px;
+  height: 20px;
 }
 
 .carousel-control:not(:disabled):hover {
@@ -879,9 +965,17 @@ onUnmounted(() => {
 .modal-close {
   background: transparent;
   border: none;
-  font-size: 1.5rem;
   color: #1a1a1a;
   cursor: pointer;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+}
+
+.modal-close__icon {
+  width: 24px;
+  height: 24px;
 }
 
 .modal-content {
@@ -1009,7 +1103,11 @@ onUnmounted(() => {
   .pillar-icon {
     width: 72px;
     height: 72px;
-    font-size: 1.6rem;
+  }
+
+  .pillar-icon__svg {
+    width: 36px;
+    height: 36px;
   }
 
   .team-avatar {

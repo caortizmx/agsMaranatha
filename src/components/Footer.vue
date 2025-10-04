@@ -20,11 +20,25 @@
         <h2 id="footer-contact" class="footer__heading">Contacto</h2>
         <ul class="footer__list">
           <li class="footer__item">
-            <i class="fa-solid fa-phone"></i>
+            <span class="footer__icon" aria-hidden="true">
+              <svg viewBox="0 0 16 16" role="img" focusable="false">
+                <path
+                  fill="currentColor"
+                  d="M2.25 3C2.25 2.172 2.922 1.5 3.75 1.5h2.25c.621 0 1.125.504 1.125 1.125V4.5c0 .621-.504 1.125-1.125 1.125H5.25a8.25 8.25 0 0 0 5.625 5.625h1.875c.621 0 1.125.504 1.125 1.125v2.25c0 .828-.672 1.5-1.5 1.5h-.75A11.25 11.25 0 0 1 2.25 3Z"
+                />
+              </svg>
+            </span>
             <a href="tel:4491466009">449 146 6009</a>
           </li>
           <li class="footer__item">
-            <i class="fa-solid fa-envelope"></i>
+            <span class="footer__icon" aria-hidden="true">
+              <svg viewBox="0 0 20 20" role="img" focusable="false">
+                <path
+                  fill="currentColor"
+                  d="M3.75 4.5h12.5A1.75 1.75 0 0 1 18 6.25v7.5A1.75 1.75 0 0 1 16.25 15.5H3.75A1.75 1.75 0 0 1 2 13.75v-7.5A1.75 1.75 0 0 1 3.75 4.5Zm0 1.5a.25.25 0 0 0-.25.25v.142l6.186 4.34a.75.75 0 0 0 .828 0L16.75 6.392V6.25a.25.25 0 0 0-.25-.25H3.75Zm12.5 8.25a.25.25 0 0 0 .25-.25V8.322l-5.53 3.881a2.25 2.25 0 0 1-2.44 0L3 8.322V14a.25.25 0 0 0 .25.25h12.5Z"
+                />
+              </svg>
+            </span>
             <a href="mailto:colegiomaranathaags@hotmail.com">colegiomaranathaags@hotmail.com</a>
           </li>
         </ul>
@@ -40,7 +54,14 @@
             rel="noopener noreferrer"
             aria-label="Facebook"
           >
-            <i class="fa-brands fa-facebook-f"></i>
+            <span class="footer__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img" focusable="false">
+                <path
+                  fill="currentColor"
+                  d="M15 3h2.25A.75.75 0 0 1 18 3.75v2.5a.75.75 0 0 1-.75.75H15v2.5h2.25a.75.75 0 0 1 .74.92l-.5 2.5a.75.75 0 0 1-.74.58H15V21.5a.75.75 0 0 1-.75.75h-3a.75.75 0 0 1-.75-.75V13.5H8.25a.75.75 0 0 1-.75-.75v-2.5A.75.75 0 0 1 8.25 9.5H10.5V7a4 4 0 0 1 4-4Z"
+                />
+              </svg>
+            </span>
           </a>
           <a
             class="footer__social-link"
@@ -49,7 +70,14 @@
             rel="noopener noreferrer"
             aria-label="Instagram"
           >
-            <i class="fa-brands fa-instagram"></i>
+            <span class="footer__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img" focusable="false">
+                <path
+                  fill="currentColor"
+                  d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4Zm0 2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H7Zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Zm5.25-.75a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5Z"
+                />
+              </svg>
+            </span>
           </a>
           <a
             class="footer__social-link"
@@ -58,7 +86,14 @@
             rel="noopener noreferrer"
             aria-label="YouTube"
           >
-            <i class="fa-brands fa-youtube"></i>
+            <span class="footer__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img" focusable="false">
+                <path
+                  fill="currentColor"
+                  d="M4.75 6A2.75 2.75 0 0 0 2 8.75v6.5A2.75 2.75 0 0 0 4.75 18h14.5A2.75 2.75 0 0 0 22 15.25v-6.5A2.75 2.75 0 0 0 19.25 6H4.75Zm6.83 3.42 3.75 2.25a.75.75 0 0 1 0 1.26l-3.75 2.25a.75.75 0 0 1-1.14-.63v-4.5a.75.75 0 0 1 1.14-.63Z"
+                />
+              </svg>
+            </span>
           </a>
         </div>
       </section>
@@ -144,9 +179,18 @@ export default {
   font-size: clamp(0.95rem, 2vw, 1.05rem);
 }
 
-.footer__item i {
-  font-size: 1.1rem;
+.footer__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
   color: #ffcf4a;
+}
+
+.footer__icon svg {
+  width: 100%;
+  height: 100%;
 }
 
 .footer__item a {
