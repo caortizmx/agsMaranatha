@@ -355,7 +355,7 @@ const leadership = [
 
 const extendedTeam = [
   {
-    name: 'Juan Carlos Herrera',
+    name: 'Sarahi Figueroa',
     role: 'Coordinador Académico',
     image: leadershipPhotos.juan,
   },
