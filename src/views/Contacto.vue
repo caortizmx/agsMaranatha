@@ -2,7 +2,20 @@
   <section class="contact-page">
     <div class="contact-card">
       <button class="contact-close" type="button" aria-label="Cerrar formulario">
-        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        <svg
+          class="contact-close__icon"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M6 6l12 12M18 6 6 18" />
+        </svg>
       </button>
       <header class="contact-header">
         <h2 class="contact-title">¿Requiere más información?</h2>
@@ -121,9 +134,12 @@ const handleSubmit = () => {
   border: none;
   background: transparent;
   color: #da1a32;
-  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
   cursor: pointer;
   transition: transform 0.2s ease, opacity 0.2s ease;
+  display: grid;
+  place-items: center;
+  width: clamp(2.25rem, 3vw, 2.75rem);
+  height: clamp(2.25rem, 3vw, 2.75rem);
 }
 
 .contact-close:focus-visible {
@@ -134,6 +150,11 @@ const handleSubmit = () => {
 .contact-close:hover {
   transform: scale(1.05);
   opacity: 0.8;
+}
+
+.contact-close__icon {
+  width: clamp(1.25rem, 2.4vw, 1.5rem);
+  height: clamp(1.25rem, 2.4vw, 1.5rem);
 }
 
 .contact-header {
