@@ -213,6 +213,24 @@
 <script setup>
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 
+const leadershipPhotos = {
+  enrique: new URL('../assets/leadership/pastor-enrique.svg', import.meta.url).href,
+  ana: new URL('../assets/leadership/pastora-ana.svg', import.meta.url).href,
+  patricia: new URL('../assets/leadership/patricia-zuno.svg', import.meta.url).href,
+  juan: new URL('../assets/leadership/juan-carlos.svg', import.meta.url).href,
+  maria: new URL('../assets/leadership/maria-fernanda.svg', import.meta.url).href,
+  rafael: new URL('../assets/leadership/rafael-ramirez.svg', import.meta.url).href,
+  daniela: new URL('../assets/leadership/daniela-marquez.svg', import.meta.url).href,
+  luis: new URL('../assets/leadership/luis-alberto.svg', import.meta.url).href,
+  cecilia: new URL('../assets/leadership/cecilia-jimenez.svg', import.meta.url).href,
+  jorge: new URL('../assets/leadership/jorge-martinez.svg', import.meta.url).href,
+  veronica: new URL('../assets/leadership/veronica-salas.svg', import.meta.url).href,
+  carlos: new URL('../assets/leadership/carlos-guzman.svg', import.meta.url).href,
+  ariadna: new URL('../assets/leadership/ariadna-torres.svg', import.meta.url).href,
+  miguel: new URL('../assets/leadership/miguel-lira.svg', import.meta.url).href,
+  sofia: new URL('../assets/leadership/sofia-maldonado.svg', import.meta.url).href,
+}
+
 const levels = [
   {
     name: 'Preescolar',
@@ -321,17 +339,17 @@ const leadership = [
   {
     name: 'Pastor Enrique Clavellinas',
     role: 'Director',
-    image: '../assets/PS.png'
+    image: leadershipPhotos.enrique,
   },
   {
     name: 'Pastora Ana Luisa Clavellinas',
     role: 'Directora',
-    image: '../assets/Psra.png'
+    image: leadershipPhotos.ana,
   },
   {
     name: 'Patricia Zuno',
     role: 'Subdirectora',
-    image: '../assets/Paty.png'
+    image: leadershipPhotos.patricia,
   }
 ]
 
@@ -339,62 +357,62 @@ const extendedTeam = [
   {
     name: 'Sarahi Figueroa',
     role: 'Coordinador Académico',
-    image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=400&q=80'
+    image: leadershipPhotos.juan,
   },
   {
-    name: 'Benjamin Cotino',
-    role: 'Director Secundaria',
-    image: 'https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=400&q=80'
+    name: 'María Fernanda Ortiz',
+    role: 'Orientadora Educativa',
+    image: leadershipPhotos.maria,
   },
   {
-    name: 'Lael Nava',
-    role: 'Coordinador de Inglés',
-    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80'
+    name: 'Rafael Ramírez',
+    role: 'Profesor de Matemáticas',
+    image: leadershipPhotos.rafael,
   },
   {
-    name: 'Diana',
-    role: 'Directora Preescolar',
-    image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80'
+    name: 'Daniela Márquez',
+    role: 'Profesora de Ciencias',
+    image: leadershipPhotos.daniela,
   },
   {
-    name: 'Marcela Medina',
-    role: 'Profesora de Inglés (preescolar)',
-    image: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=400&q=80'
+    name: 'Luis Alberto Pérez',
+    role: 'Profesor de Historia',
+    image: leadershipPhotos.luis,
   },
   {
-    name: 'Rebeca Clavellinas',
-    role: 'Profesora de Inglés (primaria)',
-    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=400&q=80'
+    name: 'Cecilia Jiménez',
+    role: 'Coordinadora de Inglés',
+    image: leadershipPhotos.cecilia,
   },
   {
     name: 'Jorge Martínez',
     role: 'Profesor de Música',
-    image: 'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=400&q=80'
+    image: leadershipPhotos.jorge,
   },
   {
     name: 'Verónica Salas',
     role: 'Profesora de Artes',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80'
+    image: leadershipPhotos.veronica,
   },
   {
     name: 'Carlos Guzmán',
     role: 'Entrenador Deportivo',
-    image: 'https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=400&q=80'
+    image: leadershipPhotos.carlos,
   },
   {
     name: 'Ariadna Torres',
     role: 'Psicóloga Escolar',
-    image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80'
+    image: leadershipPhotos.ariadna,
   },
   {
     name: 'Miguel Ángel Lira',
     role: 'Profesor de Tecnología',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80'
+    image: leadershipPhotos.miguel,
   },
   {
     name: 'Sofía Maldonado',
     role: 'Profesora de Literatura',
-    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=400&q=80'
+    image: leadershipPhotos.sofia,
   }
 ]
 
