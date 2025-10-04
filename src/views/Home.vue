@@ -244,49 +244,49 @@ const leadership = [
   {
     name: 'Pastor Enrique Clavellinas',
     role: 'Director',
-    image: 'https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?auto=format&fit=crop&w=400&q=80'
+    image: '../assets/PS.png'
   },
   {
     name: 'Pastora Ana Luisa Clavellinas',
     role: 'Directora',
-    image: 'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=400&q=80'
+    image: '../assets/Psra.png'
   },
   {
     name: 'Patricia Zuno',
     role: 'Subdirectora',
-    image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80'
+    image: '../assets/Paty.png'
   }
 ]
 
 const extendedTeam = [
   {
-    name: 'Juan Carlos Herrera',
+    name: 'Sarahi Figueroa',
     role: 'Coordinador Académico',
     image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=400&q=80'
   },
   {
-    name: 'María Fernanda Ortiz',
-    role: 'Orientadora Educativa',
-    image: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=400&q=80'
+    name: 'Benjamin Cotino',
+    role: 'Director Secundaria',
+    image: 'https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=400&q=80'
   },
   {
-    name: 'Rafael Ramírez',
-    role: 'Profesor de Matemáticas',
+    name: 'Lael Nava',
+    role: 'Coordinador de Inglés',
     image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80'
   },
   {
-    name: 'Daniela Márquez',
-    role: 'Profesora de Ciencias',
+    name: 'Diana',
+    role: 'Directora Preescolar',
     image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80'
   },
   {
-    name: 'Luis Alberto Pérez',
-    role: 'Profesor de Historia',
-    image: 'https://images.unsplash.com/photo-1546456073-6712f79251bb?auto=format&fit=crop&w=400&q=80'
+    name: 'Marcela Medina',
+    role: 'Profesora de Inglés (preescolar)',
+    image: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=400&q=80'
   },
   {
-    name: 'Cecilia Jiménez',
-    role: 'Coordinadora de Inglés',
+    name: 'Rebeca Clavellinas',
+    role: 'Profesora de Inglés (primaria)',
     image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=400&q=80'
   },
   {
